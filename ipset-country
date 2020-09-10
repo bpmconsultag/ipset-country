@@ -554,9 +554,6 @@ if [ "$IPV4" -eq 1 ]; then
     IPBLOCK_URL_V4="$IPBLOCK_URL"
   fi
   func_block_ip "$IPBLOCK_URL_V4"
-  if [ "$(iptables -L  | grep -c "match-set firehol_abusers_30d")" -eq 0 ] ; then
-    $iptables -A INPUT -p tcp -m set --match-set firehol_abusers_30d src -j LOGIPS
-  fi
 fi
 
 # ipv6 uses 'ip6tables'
